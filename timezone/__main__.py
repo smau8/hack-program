@@ -5,12 +5,13 @@ Command line interface to timezone
 """
 
 import argparse
-from timezone import region
+from timezone import timezones
 
 
 def parse_command_line():
-    "parses args for the region function"
-
+    """
+    parses args for the region function
+    """
     # init parser and add arguments
     parser = argparse.ArgumentParser()
 
@@ -42,18 +43,19 @@ def parse_command_line():
 
 
 def run_program():
-    "run main function on parsed args"
-
+    """
+    run main function on parsed args
+    """
     # get arguments from command line as a dict-like object
     args = parse_command_line()
 
     # pass argument to call darwinday function
     if args.westcoast:
-        region('westcoast')
+        timezones.region(timezones, "westcoast")
+        timezones.time_diff(timezones,"westcoast")
     elif args.midwest:
-        region('midwest')
+        timezones.region(timezones,"midwest")
+        timezones.time_diff(timezones, "midwest")
     elif args.eastcoast:
-        region('eastcoast')
-
-if __name__ == "__main__":
-    region('westcoast')
+        timezones.region(timezones, "eastcoast")
+        timezones.time_diff(timezones, "eastcoast")
